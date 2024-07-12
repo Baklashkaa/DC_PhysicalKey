@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DC_PhysicalKey.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DC_PhysicalKey.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Plugins.DC_PhysicalKey.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Plugins.DC_PhysicalKey.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projects.DC_PhysicalKey.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Projects.DC_PhysicalKey.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projects.Plugins.DC_PhysicalKey.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Projects.Plugins.DC_PhysicalKey.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.baklashka.DC_PhysicalKey.main.iml" filepath="$PROJECT_DIR$/.idea/modules/net.baklashka.DC_PhysicalKey.main.iml" />
     </modules>

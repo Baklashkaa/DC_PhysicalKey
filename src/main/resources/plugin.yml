@@ -1,6 +1,6 @@
 name: DC_PhysicalKey
 version: '${version}'
-main: net.baklashka.dc_physicalkey.DC_PhysicalKey
+main: net.baklashka.dc_physicalkey.bootstrap.MainPlugin
 api-version: '1.16'
 
 depend:

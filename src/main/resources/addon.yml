@@ -1,0 +1,3 @@
+name: DC_PhysicalKey
+version: '${version}'
+main: net.baklashka.dc_physicalkey.bootstrap.MainAddon
