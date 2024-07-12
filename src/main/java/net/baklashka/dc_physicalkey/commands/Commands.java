@@ -1,16 +1,13 @@
-package net.baklashka.dc_physicalkey;
+package net.baklashka.dc_physicalkey.commands;
 
-import com.jodexindustries.donatecase.api.SubCommand;
-import com.jodexindustries.donatecase.api.SubCommandManager;
-import com.jodexindustries.donatecase.api.SubCommandType;
+import com.jodexindustries.donatecase.api.data.SubCommand;
+import com.jodexindustries.donatecase.api.data.SubCommandType;
+import net.baklashka.dc_physicalkey.utils.ConfigManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,6 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Commands implements SubCommand {
+    public ConfigManager configManager;
+    public Commands(ConfigManager configManager) {
+        this.configManager = configManager;
+    }
     @Override
     public void execute(CommandSender sender, String[] args) {
         if (args[0].equalsIgnoreCase("givekey") && sender.hasPermission("dc_physicalkey.give")) {
@@ -33,7 +34,7 @@ public class Commands implements SubCommand {
                 int amount = Integer.parseInt(amountst);
                 Player p = Bukkit.getServer().getPlayer(playername);
                 ItemStack item = new ItemStack(Material.TRIPWIRE_HOOK, amount);
-                FileConfiguration config = ConfigManager.getConfig();
+                YamlConfiguration config = configManager.getFile();
                 if (config != null && config.contains("Key.physical-key-lore") && config.contains("Key.physical-key-name")) {
                     String name = ChatColor.translateAlternateColorCodes('&', config.getString("Key.physical-key-name"));
                     List<String> lore = config.getStringList("Key.physical-key-lore");
@@ -60,7 +61,7 @@ public class Commands implements SubCommand {
             }
         }
         if (args[0].equalsIgnoreCase("reload") && sender.hasPermission("dc_physicalkey.reload")) {
-            ConfigManager.reloadConfig();
+            configManager.reloadConfig();
             sender.sendMessage(ChatColor.GREEN + "The config has been successfully reloaded!");
         }
     }
