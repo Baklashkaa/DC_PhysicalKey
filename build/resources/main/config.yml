@@ -1,0 +1,8 @@
+Key:
+  physical-key-name: "&aDonate Key"
+  physical-key-lore:
+    - "The key for DonateCase"
+  physical-key-lore-case-type: "Key type"
+
+give-key-message: "&aYou have given %player% %amount% physical keys."
+player-not-found: "&cCould not find player '%player%'"
