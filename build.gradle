@@ -50,4 +50,7 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+    filesMatching('addon.yml') {
+        expand props
+    }
 }
