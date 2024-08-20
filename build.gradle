@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'net.baklashka'
-version = '1.0.3'
+version = '1.0.4'
 
 repositories {
     mavenCentral()
@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT"
-    compileOnly("com.jodexindustries.donatecase:DonateCaseAPI:2.2.5.0")
+    compileOnly("com.jodexindustries.donatecase:DonateCaseAPI:2.2.5.3")
 }
 
 def targetJavaVersion = 11
