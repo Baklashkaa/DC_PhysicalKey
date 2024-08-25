@@ -1,7 +1,0 @@
-name: DC_PhysicalKey
-version: '1.0.0'
-main: net.baklashka.dc_physicalkey.DC_PhysicalKey
-api-version: '1.16'
-
-depend:
-  - DonateCase

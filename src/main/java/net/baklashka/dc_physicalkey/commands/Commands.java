@@ -1,7 +1,10 @@
 package net.baklashka.dc_physicalkey.commands;
 
-import com.jodexindustries.donatecase.api.data.SubCommand;
+import com.jodexindustries.donatecase.api.SubCommandManager;
 import com.jodexindustries.donatecase.api.data.SubCommandType;
+import com.jodexindustries.donatecase.api.data.subcommand.SubCommand;
+import com.jodexindustries.donatecase.api.data.subcommand.SubCommandExecutor;
+import com.jodexindustries.donatecase.api.data.subcommand.SubCommandTabCompleter;
 import net.baklashka.dc_physicalkey.utils.ConfigManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,13 +18,21 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Commands implements SubCommand {
+public class Commands implements SubCommandExecutor, SubCommandTabCompleter {
     public ConfigManager configManager;
-    public Commands(ConfigManager configManager) {
+
+    public Commands(SubCommandManager manager, ConfigManager configManager) {
         this.configManager = configManager;
+        SubCommand subCommand = manager.builder("phisicalkey")
+                .type(SubCommandType.PLAYER)
+                .executor(this)
+                .tabCompleter(this)
+                .build();
+        manager.registerSubCommand(subCommand);
     }
+
     @Override
-    public void execute(CommandSender sender, String[] args) {
+    public void execute(CommandSender sender, String label, String[] args) {
         if(args.length >= 1) {
             if (args[0].equalsIgnoreCase("givekey") && sender.hasPermission("dc_physicalkey.give")) {
                 if (args.length <= 3) {
@@ -69,7 +80,7 @@ public class Commands implements SubCommand {
     }
 
     @Override
-    public List<String> getTabCompletions(CommandSender sender, String[] args) {
+    public List<String> getTabCompletions(CommandSender sender, String label, String[] args) {
         if(args.length == 1){
             List<String> arguments = new ArrayList<>();
             arguments.add("givekey");
@@ -84,14 +95,9 @@ public class Commands implements SubCommand {
             return list;
         }
         if(args.length == 3 || args.length == 4){
-            List<String> arguments = new ArrayList<>();
-            return arguments;
+            return new ArrayList<>();
         }
         return null;
     }
 
-    @Override
-    public SubCommandType getType() {
-        return SubCommandType.PLAYER;
-    }
 }

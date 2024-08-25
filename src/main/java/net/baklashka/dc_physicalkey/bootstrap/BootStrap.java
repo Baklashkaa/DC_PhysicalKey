@@ -18,7 +18,7 @@ public class BootStrap {
 
     public void load() {
         listenerKey = new ListenerKey(configManager);
-        plugin.getCaseManager().getSubCommandManager().registerSubCommand("physicalkey", new Commands(configManager));
+        new Commands(plugin.getCaseManager().getSubCommandManager(), configManager);
         Bukkit.getServer().getPluginManager().registerEvents(listenerKey, plugin.getPlugin());
     }
 
